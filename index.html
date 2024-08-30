@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,30 +89,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="text/javascript">
-      const escolaridadeSelect = document.querySelector("#escolaridade");
-      const serieSelect = document.querySelector("#serie");
-
-      function inserirNoSelect(select, quantidade) {
-        for (let i = 1; i <= quantidade; i++) {
-          let option = document.createElement("option");
-          option.value = i;
-          option.textContent = `${i}° Ano`;
-          serieSelect.appendChild(option);
-        }
-      }
-
-      escolaridadeSelect.addEventListener("change", (event) => {
-        serieSelect.innerHTML = "";
-
-        if (event.target.value === "fundamental") {
-          inserirNoSelect(serieSelect, 9);
-        } else if (event.target.value === "medio") {
-          inserirNoSelect(serieSelect, 3);
-        }
-      });
-
-      inserirNoSelect(serieSelect, 9);
-    </script>
+    <script type="module" src="js/index.js"></script>
   </body>
 </html>
