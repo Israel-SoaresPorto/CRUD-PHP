@@ -1,4 +1,4 @@
-import inserirNoSelect from "./inserirNoSelect.js";
+import { insertOnSelect } from "./utils.js";
 
 const tipoDeBusca = document.querySelector("#buscar-por");
 const campoDeBusca = document.querySelector("#campo-de-busca");
@@ -7,15 +7,13 @@ tipoDeBusca.addEventListener("change", (event) => {
   campoDeBusca.innerHTML = "";
 
   if (event.target.value === "nome") {
-    campoDeBusca.classList.remove("input-group");
-
     let label = document.createElement("label");
     label.htmlFor = "param";
-    label.className = "form-label";
+    label.className = "input-group-text";
     label.textContent = "Nome";
 
     let input = document.createElement("input");
-    input.type = 'text'
+    input.type = "text";
     input.name = "param";
     input.id = "param";
     input.className = "form-control";
@@ -23,8 +21,6 @@ tipoDeBusca.addEventListener("change", (event) => {
     campoDeBusca.appendChild(label);
     campoDeBusca.appendChild(input);
   } else if (event.target.value === "escolaridade") {
-    campoDeBusca.classList.add("input-group");
-
     let label = document.createElement("label");
     label.htmlFor = "param";
     label.className = "input-group-text";
@@ -41,8 +37,6 @@ tipoDeBusca.addEventListener("change", (event) => {
     campoDeBusca.appendChild(label);
     campoDeBusca.appendChild(select);
   } else if (event.target.value === "serie") {
-    campoDeBusca.classList.add("input-group");
-
     let label = document.createElement("label");
     label.htmlFor = "param";
     label.className = "input-group-text";
@@ -53,7 +47,7 @@ tipoDeBusca.addEventListener("change", (event) => {
     select.id = "param";
     select.className = "form-select";
 
-    inserirNoSelect(select, 9);
+    insertOnSelect(select, 9);
 
     campoDeBusca.appendChild(label);
     campoDeBusca.appendChild(select);
