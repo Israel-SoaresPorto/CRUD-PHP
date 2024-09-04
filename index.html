@@ -36,7 +36,7 @@
             <div
               class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-4"
             >
-              <div class="input-group w-auto">
+              <div class="input-group">
                 <label for="buscar-por" class="input-group-text"
                   >Buscar por</label
                 >
@@ -46,7 +46,7 @@
                   <option value="serie">Série</option>
                 </select>
               </div>
-              <div class="input-group w-auto" id="campo-de-busca">
+              <div class="input-group" id="campo-de-busca">
                 <label for="param" class="input-group-text">Nome</label>
                 <input
                   type="text"
@@ -55,16 +55,13 @@
                   class="form-control"
                 />
               </div>
-              <button type="submit" class="btn btn-primary">Fazer Busca</button>
+              <button type="submit" class="btn btn-primary align-self-end">Fazer Busca</button>
             </div>
           </fieldset>
         </form>
       </div>
 
-      <table
-        class="table table-hover table-striped table-bordered"
-        style="max-width: 40em"
-      >
+      <table class="table table-hover table-striped table-bordered">
         <thead class="table-success">
           <tr>
             <th>ID</th>
