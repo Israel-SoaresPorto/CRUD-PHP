@@ -16,11 +16,12 @@ export function showAlert(message, type) {
     </div>`;
 }
 
-export function insertOnTable(data) {
-  const table = document.querySelector(".table");
-  const tableBody = table.querySelector("tbody");
-
-  tableBody.innerHTML = "";
+export function renderTable(data) {
+  const table = document.createElement("table");
+  table.className =
+    "table table-hover table-striped table-bordered";
+  table.innerHTML =
+    "<thead class='table-success'><tr><th>ID</th><th>Nome</th><th>Escolaridade</th><th>Série</th></tr></thead><tbody></tbody>";
 
   data.forEach((d) => {
     let tr = document.createElement("tr");
@@ -38,6 +39,8 @@ export function insertOnTable(data) {
                     <td>Ensino ${escolaridade}</td>
                     <td>${d.serie}° Ano`;
 
-    tableBody.appendChild(tr);
+    table.querySelector("tbody").appendChild(tr);
   });
+
+  return table;
 }

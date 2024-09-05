@@ -1,16 +1,22 @@
-import { showAlert, insertOnTable } from "./utils.js";
+import { showAlert, renderTable } from "./utils.js";
 
 const registerForm = document.querySelector("#register-form");
 const searchForm = document.querySelector("#search-form");
 const modal = new bootstrap.Modal("#modal-register");
+const dataDiv = document.querySelector(".data");
 
-async function showData() {
+async function showDataOnLoad() {
   let response = await fetch("../app/listagem.php");
   let data = await response.json();
-  insertOnTable(data);
+  showData(data);
 }
 
-window.addEventListener("load", showData);
+function showData(data) {
+  dataDiv.innerHTML = "";
+  dataDiv.appendChild(renderTable(data));
+}
+
+window.addEventListener("load", showDataOnLoad);
 
 registerForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -25,7 +31,7 @@ registerForm.addEventListener("submit", (event) => {
     .then((data) => {
       if (data.status === "ok") {
         registerForm.reset();
-        showData(data);
+        showDataOnLoad();
         modal.hide();
         showAlert(data.message, "success");
       } else {
@@ -49,10 +55,10 @@ searchForm.addEventListener("submit", (event) => {
     .then((response) => response.json())
     .then((data) => {
       if (data.length > 0) {
-        insertOnTable(data);
+        showData(data);
       } else {
+        dataDiv.innerHTML = "";
         showAlert("Nenhum registro encontrado", "warning");
-        insertOnTable(data);
       }
     });
 });

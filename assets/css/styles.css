@@ -1,10 +1,15 @@
 #alert-message {
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, 50%);
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, 50%);
 }
 
 .search {
+  width: 100%;
+  max-width: 40em;
+}
+
+.data {
   width: 100%;
   max-width: 40em;
 }
