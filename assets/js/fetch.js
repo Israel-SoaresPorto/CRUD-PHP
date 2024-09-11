@@ -8,11 +8,6 @@ const dataDiv = document.querySelector(".data");
 async function showDataOnLoad() {
   let response = await fetch("../app/listagem.php");
   let data = await response.json();
-  showData(data);
-}
-
-function showData(data) {
-  dataDiv.innerHTML = "";
   dataDiv.appendChild(renderTable(data));
 }
 
@@ -55,9 +50,8 @@ searchForm.addEventListener("submit", (event) => {
     .then((response) => response.json())
     .then((data) => {
       if (data.length > 0) {
-        showData(data);
+        dataDiv.replaceChild(renderTable(data), dataDiv.childNodes[0]);
       } else {
-        dataDiv.innerHTML = "";
         showAlert("Nenhum registro encontrado", "warning");
       }
     });
