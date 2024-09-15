@@ -26,6 +26,7 @@ registerForm.addEventListener("submit", (event) => {
     .then((data) => {
       if (data.status === "ok") {
         registerForm.reset();
+        dataDiv.innerHTML = "";
         showDataOnLoad();
         modal.hide();
         showAlert(data.message, "success");
@@ -49,8 +50,10 @@ searchForm.addEventListener("submit", (event) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      dataDiv.innerHTML = "";
+
       if (data.length > 0) {
-        dataDiv.replaceChild(renderTable(data), dataDiv.childNodes[0]);
+        dataDiv.appendChild(renderTable(data));
       } else {
         showAlert("Nenhum registro encontrado", "warning");
       }
